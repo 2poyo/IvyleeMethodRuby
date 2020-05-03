@@ -1,8 +1,14 @@
-<div class="center jumbotron">
-  <h1>Welcome to the</h1>
-  <h1>ILM App</h1>
-
-  <h2>This is the home page for the Ivy Lee Method application.</h2>
-
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-</div>
+<% if logged_in? %>
+  <div class="row">
+    <h1>aaa</h1>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <h1>Welcome to the</h1>
+    <h1>ILM App</h1>
+  
+    <h2>This is the home page for the Ivy Lee Method application.</h2>
+  
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>

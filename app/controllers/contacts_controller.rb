@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
     if @contact.save
       ContactMailer.contact_mail(@contact).deliver
       flash[:success] = 'Inquiry accepted'
-      redirect_to root_path
+      redirect_to contact_path
     else
       render :new
     end

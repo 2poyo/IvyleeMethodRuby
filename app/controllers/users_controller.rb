@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome to the ILM App!"
-      redirect_to @user
+      redirect_to root_url
     else
       render 'new'
     end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
-      redirect_to @user
+      redirect_to root_url
     else
       render 'edit'
     end
