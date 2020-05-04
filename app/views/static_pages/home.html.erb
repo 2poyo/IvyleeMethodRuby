@@ -1,6 +1,8 @@
 <% if logged_in? %>
   <div class="row">
-    <h1>aaa</h1>
+    <section class="micropost_form">
+      <%= render 'shared/micropost_form' %>
+    </section>
   </div>
 <% else %>
   <div class="center jumbotron">

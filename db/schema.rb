@@ -10,13 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200503173153) do
+ActiveRecord::Schema.define(version: 20200503210404) do
 
   create_table "contacts", force: :cascade do |t|
     t.string "email"
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "microposts", force: :cascade do |t|
+    t.date "date"
+    t.string "first"
+    t.string "second"
+    t.string "third"
+    t.string "fourth"
+    t.string "fifth"
+    t.string "sixth"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "date"], name: "index_microposts_on_user_id_and_date"
+    t.index ["user_id"], name: "index_microposts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
