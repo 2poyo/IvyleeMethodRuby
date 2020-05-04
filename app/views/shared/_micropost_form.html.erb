@@ -1,13 +1,17 @@
-<h3>
-  <div id="ilmDate"></div>
-</h3>
-<label>
-  <input type="date" id="setDate">
-</label>
 <%= form_for(@micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
     <%= f.date_field :date, placeholder: "Compose new micropost..." ,value: Date.today %>
   </div>
+  
+  <%= f.label :first %>
+  <%= f.text_field :first, class: 'form-control' %>
+  
+  <%= f.label :second %>
+  <%= f.text_field :second, class: 'form-control' %>
+  
+  <%= f.label :thrid %>
+  <%= f.text_field :thrid, class: 'form-control' %>
+  
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

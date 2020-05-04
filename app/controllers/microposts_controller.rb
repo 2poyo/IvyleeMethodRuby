@@ -18,6 +18,6 @@ class MicropostsController < ApplicationController
   private
 
     def micropost_params
-      params.require(:micropost).permit(:date)
+      params.require(:micropost).permit(:date, :first, :second, :thrid)
     end
 end

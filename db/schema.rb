@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 20200504051135) do
 
   create_table "microposts", force: :cascade do |t|
     t.date "date"
+    t.string "first"
+    t.string "second"
+    t.string "thrid"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
