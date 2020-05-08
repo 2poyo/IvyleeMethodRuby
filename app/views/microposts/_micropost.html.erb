@@ -1,37 +1,45 @@
-<li id="micropost-<%= micropost.id %>">
-  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
-  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
-  <span class="content"><%= micropost.date %></span>
-  <span class="content"><%= micropost.first %></span>
-  <span class="content"><%= micropost.second %></span>
-  <span class="content"><%= micropost.thrid %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-  </span>
-</li>
-
-<h3 class="col"><div id="test"></div></h3>
+<!--<li id="micropost-<%= micropost.id %>">-->
+<!--  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>-->
+<!--  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>-->
+<!--  <span class="content"><%= micropost.date %></span>-->
+<!--  <span class="content"><%= micropost.first %></span>-->
+<!--  <span class="content"><%= micropost.second %></span>-->
+<!--  <span class="content"><%= micropost.thrid %></span>-->
+<!--  <span class="timestamp">-->
+<!--    Posted <%= time_ago_in_words(micropost.created_at) %> ago.-->
+<!--  </span>-->
+<!--</li>-->
+<h3 class="col"><div id="ilmDate"></div></h3>
 <label class="post-label">
   <input type="date" id="setDate" class="col">
 </label>
 
-<div class="row">
-<table class="table table-bordered">
-  <thead style="text-align:center"><tr><th>内容</th><th>結果</th></tr></thead>
-  <tr>
-    <td><input type="text" value= <%= micropost.first %>></td>
-    <td><input type="button" class="btn btn-sm btn-primary" value="達成" onchange=changeValue(this)></td>
-  </tr>
-  <tr>
-    <td><input type="text" value= <%= micropost.second %>></td>
-    <td><input type="button" class="btn btn-sm btn-primary" value="達成"></td>
-  </tr>
-  <tr>
-    <td><input type="text" value= <%= micropost.thrid %>></td>
-    <td><input type="button" class="btn btn-sm btn-primary" value="達成"></td>
-  </tr>
-</table>
-</div>
+<%= form_for(@micropost) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.date_field :date, placeholder: "Compose new micropost..." ,value: "set_ilm_date()"%>
+  </div>
+  
+  
+  
+  <table class="table table-bordered">
+    <thead style="text-align:center"><tr><th>内容</th><th>結果</th></tr></thead>
+    <tr>
+      <td><%= f.text_field :first, class: 'form-control' ,value:micropost.first %></td>
+      <td><input type="button" class="btn btn-sm btn-primary" value="達成" onchange=changeValue(this)></td>
+    </tr>
+    <tr>
+      <td><%= f.text_field :second, class: 'form-control' ,value:micropost.second %></td>
+      <td><input type="button" class="btn btn-sm btn-primary" value="達成"></td>
+    </tr>
+    <tr>
+      <td><%= f.text_field :thrid, class: 'form-control' ,value:micropost.thrid %></td>
+      <td><input type="button" class="btn btn-sm btn-primary" value="達成"></td>
+    </tr>
+  </table>
+  
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
 
 <script>
   function setDate(day){
@@ -82,6 +90,11 @@
       $this.classList.add("btn-primary");
       $this.value = "達成";
     }
+  }
+  
+  function set_ilm_date(){
+    alert(document.getElementById("setDate").value)
+    return document.getElementById("setDate").value;
   }
     
   setDay();
